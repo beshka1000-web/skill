@@ -47,16 +47,42 @@
 Актуальный скрипт описан в hw8_1.py.
 Бинарный поиск (game_core_v3)
 Как работает:
-
 Устанавливаем границы поиска: low = 1, high = 100
-
 Предполагаем число посередине: predict = (low + high) // 2
-
 Если угадали — возвращаем попытки
-
 Если загаданное число больше — двигаем нижнюю границу: low = predict + 1
-
 Если меньше — двигаем верхнюю границу: high = predict - 1
+
+
+
+### Сравнение подходов
+Чтобы сравнить эффективность подходов, можно запустить следующий код:
+```python
+import numpy as np
+from hw8_1 import random_predict, game_core_v2, score_game, game_core_v3
+
+#Run benchmarking to score effectiveness of all algorithms
+print('Run benchmarking for random_predict: ', end='')
+score_game(random_predict)
+
+print('Run benchmarking for game_core_v2: ', end='')
+score_game(game_core_v2)
+
+print('Run benchmarking for game_core_v3: ', end='')
+score_game(game_core_v3)
+```
+Итогом исполнения будет:
+```
+Run benchmarking for random_predict: Ваш алгоритм угадывает число в среднем за: 102 попытки
+Run benchmarking for game_core_v2: Ваш алгоритм угадывает число в среднем за: 33 попытки
+Run benchmarking for game_core_v3: Ваш алгоритм угадывает число в среднем за: 5 попытки
+```
+
+Таким образом, суммируя эффективность работы трех программ:
+|Случайное угаывание|Угадывание с коррекцией|Деление пополам|
+|:-:|:-:|:-:|
+|102|33|5|
+
 
 :arrow_up:[к оглавлению](.README.md#Оглавление)
 
